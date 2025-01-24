@@ -28,7 +28,7 @@ userRouter.post('/signup', async (c) => {
   
     const user = await prisma.user.create({
       data: {
-        email: body.username,
+        username: body.username,
         password: body.password,
         name : body.name
       },
@@ -36,7 +36,7 @@ userRouter.post('/signup', async (c) => {
   
     const token = await sign( {id: user.id}, c.env.JWT_SECRET)
   
-    return c.json({ jwt : token });
+    return c.json({ token });
   })
   
   
@@ -56,7 +56,7 @@ userRouter.post('/signup', async (c) => {
 
     const user = await prisma.user.findUnique({
       where: {
-        email: body.email,
+        username : body.username,
         password: body.password
       }
     })
@@ -66,7 +66,7 @@ userRouter.post('/signup', async (c) => {
       return c.json({ error : 'Invalid credentials' })
     }
   
-    const token = sign( { id: user.id}, c.env.JWT_SECRET)
+    const token = await sign( { id: user.id}, c.env.JWT_SECRET)
   
-    return c.json({ jwt : token })
+    return c.json({ token })
   })
