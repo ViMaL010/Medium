@@ -154,3 +154,33 @@ blogRouter.get('/:id', async (c) => {
         })
     }
 })
+
+
+blogRouter.delete('/:id', async (c) => {
+    const id = c.req.param('id');
+    console.log("Backend hit");
+    console.log(id+ "from backend");
+    
+    
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL
+    }).$extends(withAccelerate());
+
+    try {
+        const blog = await prisma.post.delete({
+            where: {
+                id : Number(id)
+            }
+        })
+
+        return c.json({
+            id: blog.id
+        })
+
+    } catch(e){
+        c.status(404);
+        return c.json({
+            error : 'Blog not found'
+        })
+    }
+})

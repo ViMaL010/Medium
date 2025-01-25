@@ -9,7 +9,7 @@ export const Blogs = () => {
     
     if(loading){
         return <div>
-            <Appbar/>
+            <Appbar deletepost="no"/>
             <div className="flex justify-center">
                 <div className="">
                     <Skeletons/>

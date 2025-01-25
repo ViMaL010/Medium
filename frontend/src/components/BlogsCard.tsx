@@ -16,10 +16,10 @@ export const BlogsCard = ({
     publishedDate
 } :  blogCardProps) => {
        return <Link to={`/blogs/${id}`}>
-        <div className="p-4 border-b-[1px] border-slate-200 pb-4">
+        <div className="p-4 border-b-[1px] border-slate-200">
             <div className="flex items-center gap-2">
                 <div className="flex justify-center flex-col text-sm">
-                    <Avatar authorName = {authorName}/>
+                    <Avatar authorName = {authorName} type="Small"/>
                 </div>
                 <div className="font-thin text-sm">
                     {authorName} 
@@ -44,10 +44,10 @@ export const BlogsCard = ({
     </Link>
 }
 
-export function Avatar({authorName} : {authorName: string}){
+export function Avatar({authorName, type} : {authorName: string, type:string}) {
     let authName = authorName.split(" ").map(word => word.charAt(0)).join('')
-    return <div className="relative inline-flex items-center justify-center w-8 h-8 overflow-hidden rounded-full bg-gray-500 text-[12px]">
-    <span className="font-xs text-gray-300">{authName} </span>
+    return <div className={`relative inline-flex items-center justify-center ${type==="Big"? "w-12 h-12" : "w-9 h-9"} overflow-hidden rounded-full bg-gray-500 ${type==="Big"? "text-[26px]" : "text-[12px]"}`}>
+    <span className={`font-xs text-gray-300 ${type==="Big"?"mb-2": null}`} >{authName} </span>
     </div>
 
 }

@@ -1,6 +1,6 @@
 export const Skeletons = () => {
     return <div>    
-        <div role="status" className="w-[750px] animate-pulse max-w-screen-lg">
+        <div role="status" className="w-[480px] animate-pulse lg:w-[750px] max-w-screen-lg">
             <div>
                         <div className="p-4 border-b-[1px] border-slate-200 pb-4">
                             <div className="flex items-center gap-2">

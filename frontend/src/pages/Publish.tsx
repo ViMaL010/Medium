@@ -9,7 +9,7 @@ export const Publish = () => {
     const [description, setDescription] = useState("");
     const navigate = useNavigate();
     return <div >   
-    <Appbar/>
+    <Appbar deletepost="no"/>
     <div className="flex justify-center">
         <div className="max-w-screen-lg w-full pt-8">
                 <input onChange={(e)=>{
