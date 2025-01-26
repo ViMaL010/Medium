@@ -1,11 +1,11 @@
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Avatar } from "./BlogsCard"
 import { DeletePost } from "./DeletePost"
 type AppbarProps = {
     deletepost?: string
 }
 
-export const Appbar = ({ deletepost }: AppbarProps, { type }: { type: "yes" | "no" }) => {
+export const Appbar = ({ deletepost }: AppbarProps) => {
 
     return <div className="flex justify-between items-center border-b px-10 py-2">
         <Link to={"/blogs"} className="cursor-pointer">

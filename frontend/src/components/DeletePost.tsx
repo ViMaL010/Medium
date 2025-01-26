@@ -1,23 +1,24 @@
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useBlogs } from "../hooks";
 
 export const DeletePost = () => {
   const { id: paramId } = useParams(); // Extracting id from route params
+  {/* 
+  // @ts-ignore */}
   const [id, setId] = useState<string | null>(paramId || null);
   const navigate = useNavigate();
 
   const handleDelete = async () => {
     if (id) {
       try {
-        const response = await axios.delete(`${BACKEND_URL}/api/v1/blog/${id}`, {
+        await axios.delete(`${BACKEND_URL}/api/v1/blog/${id}`, {
           headers: {
             Authorization: localStorage.getItem("token") || "",
           },
         });
-
         // Navigate to another page after deletion
         navigate("/blogs", { replace: true });
         useBlogs();
