@@ -18,7 +18,7 @@ export const DeletePost = () => {
           headers: {
             Authorization: localStorage.getItem("token") || "",
           },
-        });
+        });2
         // Navigate to another page after deletion
         navigate("/blogs", { replace: true });
         useBlogs();

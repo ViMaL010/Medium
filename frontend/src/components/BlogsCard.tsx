@@ -44,10 +44,22 @@ export const BlogsCard = ({
     </Link>
 }
 
-export function Avatar({authorName, type} : {authorName: string, type:string}) {
-    let authName = authorName.split(" ").map(word => word.charAt(0)).join('')
-    return <div className={`relative inline-flex items-center justify-center ${type==="Big"? "w-12 h-12" : "w-9 h-9"} overflow-hidden rounded-full bg-gray-500 ${type==="Big"? "text-[26px]" : "text-[12px]"}`}>
-    <span className={`font-xs text-gray-300 ${type==="Big"?"mb-2": null}`} >{authName} </span>
-    </div>
+export function Avatar({ authorName, type }: { authorName?: string; type: string }) {
+  // Determine the author's initials or fallback to "U"
+  const authName =
+    authorName && authorName.trim()
+      ? authorName.split(" ").map((word) => word.charAt(0)).join("")
+      : localStorage.getItem("name")?.charAt(0);
 
+  // Set class names dynamically based on the `type` prop
+  const sizeClass = type === "Big" ? "w-12 h-12 text-[24px]" : "w-9 h-9 text-[12px]";
+  const positionClass = type === "Big" ? "mb-1" : "";
+  
+  return (
+    <div
+      className={`relative inline-flex items-center justify-center ${sizeClass} overflow-hidden rounded-full bg-gray-500 ml-1 mb-[9px]`}
+    >
+      <span className={`font-xs text-gray-300 ${positionClass}`}>{authName}</span>
+    </div>
+  );
 }
