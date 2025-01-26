@@ -18,8 +18,6 @@ export const DeletePost = () => {
           },
         });
 
-        console.log("Deleted post ID:", response.data.id);
-
         // Navigate to another page after deletion
         navigate("/blogs", { replace: true });
         useBlogs();

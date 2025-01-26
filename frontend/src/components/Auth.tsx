@@ -19,7 +19,9 @@ export const Auth = ({type} : {type: "signup" | "signin"}) => {
                 password: postInputs.password}
             );
             const jwt = response.data;
+            console.log(response.data.name);
             
+            localStorage.setItem("name", jwt.name || "Guest");
             localStorage.setItem("token",jwt.token);
             navigate("/blogs");
         }catch(e){

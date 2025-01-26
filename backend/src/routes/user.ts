@@ -32,11 +32,15 @@ userRouter.post('/signup', async (c) => {
         password: body.password,
         name : body.name
       },
+      select : {
+        id : true,
+        name : true,
+      }
     })
   
     const token = await sign( {id: user.id}, c.env.JWT_SECRET)
   
-    return c.json({ token });
+    return c.json({ token , name : user.name});
   })
   
   
@@ -58,6 +62,10 @@ userRouter.post('/signup', async (c) => {
       where: {
         username : body.username,
         password: body.password
+      },
+      select : {
+        id : true,
+        name : true,
       }
     })
   
@@ -68,5 +76,5 @@ userRouter.post('/signup', async (c) => {
   
     const token = await sign( { id: user.id}, c.env.JWT_SECRET)
   
-    return c.json({ token })
+    return c.json({ token , name : user.name})
   })
