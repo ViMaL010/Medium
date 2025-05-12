@@ -1,5 +1,6 @@
 import { Quote } from "../components/Quote"
 import { Auth } from "../components/Auth"
+import { useEffect } from "react"
 
 export const Signup = () => {
     useEffect(() => {
